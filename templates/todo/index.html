@@ -51,7 +51,7 @@
   {% endif %}
 
   <center class="row">
-    <h1><i>__TODO LIST__</i></h1>
+    <h1><i>Get your ares in gear fella</i></h1>
     <hr />
   </center>
 
@@ -71,6 +71,16 @@
         <form action="/del/{{i.id}}" method="POST" style=" padding-right: 4%; padding-bottom: 3%;">
           {% csrf_token %}
           <button value="remove" type="submit"  class="btn btn-primary" style="float: right;"><span class="glyphicon glyphicon-trash"></span> &nbsp; remove</button>
+            <!-- <ul> -->
+            <button value="edit" type="button" class="btn btn-secondary" style="float: right; margin-right: 10px;" onclick="location.href='{% url 'update' i.id %}'"><span class="glyphicon glyphicon-edit"></span> &nbsp; edit</button>
+            <!-- {% for item in list %} -->
+                <!-- <li> -->
+                    <!-- {{ item.text }} -->
+                    <!-- <a href="{% url 'update' item.id %}">Edit</a> -->
+                    <!-- <a href="{% url 'remove' item.id %}">Remove</a> -->
+                <!-- </li> -->
+            <!-- {% endfor %} -->
+        <!-- </ul> -->
         </form>
       </div>
       {% endfor%}
@@ -80,7 +90,7 @@
       <div  class="submit_form">
       <form  method="POST">
         {% csrf_token %}
-        {{forms}}
+        {{forms.as_p}}
         <center>
         <input type="submit" class="btn btn-default" value="submit" />
       </center>
@@ -88,6 +98,24 @@
     </div>
   </div>
 </div>
+<!-- 
+<h1>{{ title }}</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ forms.as_p }}
+    <button type="submit">Add/Update</button>
+</form>
+<ul>
+    {% for item in list %}
+        <li>
+            {{ item.text }}
+            <a href="{% url 'update' item.id %}">Edit</a>
+            <a href="{% url 'remove' item.id %}">Remove</a>
+        </li>
+    {% endfor %}
+</ul>
+
 </body>
 
-</html>
+</html> -->
+<!--  -->
